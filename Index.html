@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Santiago Sapei</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f 0%, #4e54c8 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 800px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        p { font-size: 1.1rem; line-height: 1.6; }
+
+        .location-link {
+            color: #00d2ff;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .projects {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .projects h2 { border-bottom: 2px solid #00d2ff; padding-bottom: 10px; }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 0;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .social-logo {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .social-logo:hover {
+            transform: scale(1.2);
+        }
+
+        #mapModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+
+        button.close-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #4e54c8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="FotoSapei.jpeg" alt="Santiago Sapei" class="profile-img">
+
+        <h1>Santiago Sapei</h1>
+        <p>Tengo 21 años y soy de <span class="location-link" onclick="openMap('Esmeralda')">Esmeralda, Santa Fe</span>.</p>
+        <p>Actualmente viviendo en <span class="location-link" onclick="openMap('Rafaela')">Rafaela</span>.</p>
+        
+        <p>Estudiante de 2do año de la <strong>Licenciatura en Producción de Videojuegos y Entretenimiento Digital</strong>.</p>
+
+        <div class="projects">
+            <h2>Experiencia y Proyectos</h2>
+            <p>• Desarrollé un <strong>evento digital</strong> para una tienda de ropa (ver en GitHub).</p>
+            <p>• Programador del prototipo jugable: <strong>"MasPocaPresion"</strong>.</p>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://www.instagram.com/santi_sapei/" target="_blank">
+            <img src="LogoInstagram.jpg" alt="Instagram" class="social-logo">
+        </a>
+        <a href="https://github.com/SantiagoSapei" target="_blank">
+            <img src="LogoGit.png" alt="GitHub" class="social-logo">
+        </a>
+    </footer>
+
+    <div id="overlay" onclick="closeMap()"></div>
+    <div id="mapModal">
+        <h3 id="modalTitle" style="margin-top: 0;">Ubicación</h3>
+        <iframe 
+            id="mapIframe"
+            src="" 
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <br>
+        <button class="close-btn" onclick="closeMap()">Cerrar</button>
+    </div>
+
+    <script>
+        const maps = {
+            'Esmeralda': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.33125134789!2d-61.6441589!3d-31.5033481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ca931e5087ed97%3A0xc331ed4297116744!2sEsmeralda%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1714170000000!5m2!1ses!2sar',
+            'Rafaela': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.5134825!2d-61.49121!3d-31.2526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95caae4602f37e49%3A0x7d87f73551525091!2sRafaela%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1714170000000!5m2!1ses!2sar'
+        };
+
+        function openMap(lugar) {
+            document.getElementById('modalTitle').innerText = lugar + ', Santa Fe';
+            document.getElementById('mapIframe').src = maps[lugar];
+            document.getElementById('mapModal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeMap() {
+            document.getElementById('mapModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('mapIframe').src = ''; 
+        }
+    </script>
+
+</body>
+</html>
