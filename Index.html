@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Santiago Sapei</title>
     <style>
+        /* Estilos Generales */
         body {
             margin: 0;
             padding: 0;
@@ -20,12 +21,14 @@
 
         .container {
             padding: 40px 20px;
-            max-width: 800px;
+            max-width: 900px;
+            width: 100%;
         }
 
+        /* Foto de Perfil */
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid rgba(255, 255, 255, 0.2);
@@ -33,9 +36,30 @@
             margin-bottom: 20px;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        p { font-size: 1.1rem; line-height: 1.6; }
+        h1 { font-size: 2.5rem; margin-bottom: 5px; color: #00d2ff; }
+        .subtitle { font-size: 1.2rem; color: #ccc; margin-bottom: 25px; }
+        
+        /* Secciones */
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
+        .section h2 { 
+            margin-top: 0; 
+            border-bottom: 2px solid #00d2ff; 
+            padding-bottom: 10px; 
+            font-size: 1.5rem;
+        }
+
+        p, li { line-height: 1.6; font-size: 1.05rem; }
+
+        /* Enlaces de ubicación */
         .location-link {
             color: #00d2ff;
             text-decoration: underline;
@@ -43,35 +67,37 @@
             font-weight: bold;
         }
 
-        .projects {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            backdrop-filter: blur(5px);
+        /* Proyectos */
+        .project-item {
+            margin-bottom: 20px;
         }
+        .project-item strong { color: #00d2ff; font-size: 1.1rem; }
 
-        .projects h2 { border-bottom: 2px solid #00d2ff; padding-bottom: 10px; }
+        /* Contacto y Redes */
+        .contact-info {
+            margin-top: 10px;
+            font-style: normal;
+        }
+        .contact-info a { color: #00d2ff; text-decoration: none; }
 
         footer {
-            margin-top: auto;
-            padding: 40px 0;
+            margin-top: 40px;
+            padding-bottom: 40px;
             display: flex;
-            gap: 30px;
+            gap: 25px;
             justify-content: center;
         }
 
         .social-logo {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             transition: transform 0.3s ease;
             border-radius: 10px;
         }
 
-        .social-logo:hover {
-            transform: scale(1.2);
-        }
+        .social-logo:hover { transform: scale(1.15); }
 
+        /* Modal y Mapas */
         #mapModal {
             display: none;
             position: fixed;
@@ -88,13 +114,7 @@
             max-width: 500px;
         }
 
-        iframe {
-            width: 100%;
-            height: 350px;
-            border: 0;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
+        iframe { width: 100%; height: 350px; border: 0; border-radius: 8px; margin-top: 10px; }
 
         #overlay {
             display: none;
@@ -104,7 +124,7 @@
             z-index: 999;
         }
 
-        button.close-btn {
+        .close-btn {
             margin-top: 15px;
             padding: 10px 20px;
             background: #4e54c8;
@@ -120,17 +140,52 @@
 
     <div class="container">
         <img src="FotoSapei.jpeg" alt="Santiago Sapei" class="profile-img">
-
         <h1>Santiago Sapei</h1>
-        <p>Tengo 21 años y soy de <span class="location-link" onclick="openMap('Esmeralda')">Esmeralda, Santa Fe</span>.</p>
-        <p>Actualmente viviendo en <span class="location-link" onclick="openMap('Rafaela')">Rafaela</span>.</p>
-        
-        <p>Estudiante de 2do año de la <strong>Licenciatura en Producción de Videojuegos y Entretenimiento Digital</strong>.</p>
+        <p class="subtitle">Estudiante de Programación y Videojuegos</p>
 
-        <div class="projects">
-            <h2>Experiencia y Proyectos</h2>
-            <p>• Desarrollé un <strong>evento digital</strong> para una tienda de ropa (ver en GitHub).</p>
-            <p>• Programador del prototipo jugable: <strong>"MasPocaPresion"</strong>.</p>
+        <div class="section">
+            <h2>Sobre mí</h2>
+            <p>Tengo 21 años y soy de <span class="location-link" onclick="openMap('Esmeralda')">Esmeralda, Santa Fe</span>, actualmente residiendo en <span class="location-link" onclick="openMap('Rafaela')">Rafaela</span>.</p>
+            <p>Soy una persona apasionada por la programación y el mundo de los videojuegos. Me considero alguien con una gran facilidad para el aprendizaje y una constante curiosidad por incorporar nuevos conocimientos técnicos y creativos.</p>
+            <div class="contact-info">
+                <strong>Email:</strong> <a href="mailto:santisapei926@gmail.com">santisapei926@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Formación Académica</h2>
+            <ul>
+                <li><strong>Educación Primaria:</strong> Escuela Primaria Nº 6020 "Misiones".</li>
+                <li><strong>Educación Secundaria:</strong> Anexo AESO Nº 1499 "Dr. René Favaloro".</li>
+                <li><strong>Estudios Superiores:</strong> cursando el 2do año de la Licenciatura en Producción de Videojuegos y Entretenimiento Digital (UNRaf).</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Habilidades Técnicas</h2>
+            <ul>
+                <li><strong>Ofimática:</strong> Capacitación profesional en el manejo de herramientas de Microsoft Office (Word, Excel, PowerPoint).</li>
+                <li><strong>Desarrollo:</strong> Conocimientos en lógica de programación, GDScript (Godot), HTML, CSS y control de versiones con Git/GitHub.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Proyectos Realizados</h2>
+            
+            <div class="project-item">
+                <strong>• Evento Digital Publicitario (Web):</strong>
+                <p>Desarrollo de una ruleta interactiva para una tienda de indumentaria. El sistema solicita el correo electrónico del usuario para participar y genera automáticamente un código único para el canje del premio en el local físico.</p>
+            </div>
+
+            <div class="project-item">
+                <strong>• MasPocaPresion (Prototipo):</strong>
+                <p>Proyecto desarrollado durante el primer año de carrera. Se trata de un plataformero competitivo 1 contra 1 donde el objetivo principal es defender tus calderas del ataque del plomero espacial enemigo.</p>
+            </div>
+
+            <div class="project-item">
+                <strong>• Lava Sis (En desarrollo):</strong>
+                <p>Actualmente trabajando en la creación de un prototipo jugable de estilo arcade. Es un plataformero inspirado en el clásico "SnowBros", enfocado en mecánicas fluidas y acción rápida.</p>
+            </div>
         </div>
     </div>
 
@@ -146,21 +201,15 @@
     <div id="overlay" onclick="closeMap()"></div>
     <div id="mapModal">
         <h3 id="modalTitle" style="margin-top: 0;">Ubicación</h3>
-        <iframe 
-            id="mapIframe"
-            src="" 
-            allowfullscreen="" 
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe id="mapIframe" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <br>
         <button class="close-btn" onclick="closeMap()">Cerrar</button>
     </div>
 
     <script>
         const maps = {
-            'Esmeralda': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.33125134789!2d-61.6441589!3d-31.5033481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ca931e5087ed97%3A0xc331ed4297116744!2sEsmeralda%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1714170000000!5m2!1ses!2sar',
-            'Rafaela': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.5134825!2d-61.49121!3d-31.2526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95caae4602f37e49%3A0x7d87f73551525091!2sRafaela%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1714170000000!5m2!1ses!2sar'
+            'Esmeralda': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.331201569033!2d-61.8345719!3d-31.5081297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ca9365287515e1%3A0xe744883908c6913e!2sEsmeralda%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1714150000000!5m2!1ses-419!2sar',
+            'Rafaela': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54572.34280832293!2d-61.52898252028369!3d-31.254750354666044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95caae460db27c0f%3A0x8be1b926d473c17b!2sRafaela%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1777245190103!5m2!1ses-419!2sar'
         };
 
         function openMap(lugar) {
