@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Santiago Sapei</title>
     <style>
-        /* Estilos Generales */
         body {
             margin: 0;
             padding: 0;
@@ -25,7 +24,6 @@
             width: 100%;
         }
 
-        /* Foto de Perfil */
         .profile-img {
             width: 180px;
             height: 180px;
@@ -39,7 +37,6 @@
         h1 { font-size: 2.5rem; margin-bottom: 5px; color: #00d2ff; }
         .subtitle { font-size: 1.2rem; color: #ccc; margin-bottom: 25px; }
         
-        /* Secciones */
         .section {
             background: rgba(255, 255, 255, 0.08);
             padding: 25px;
@@ -59,7 +56,6 @@
 
         p, li { line-height: 1.6; font-size: 1.05rem; }
 
-        /* Enlaces de ubicación */
         .location-link {
             color: #00d2ff;
             text-decoration: underline;
@@ -67,18 +63,16 @@
             font-weight: bold;
         }
 
-        /* Proyectos */
         .project-item {
             margin-bottom: 20px;
         }
         .project-item strong { color: #00d2ff; font-size: 1.1rem; }
 
-        /* Contacto y Redes */
         .contact-info {
             margin-top: 10px;
             font-style: normal;
         }
-        .contact-info a { color: #00d2ff; text-decoration: none; }
+        .contact-info a { color: #00d2ff; text-decoration: none; font-weight: bold; }
 
         footer {
             margin-top: 40px;
@@ -93,11 +87,11 @@
             height: 45px;
             transition: transform 0.3s ease;
             border-radius: 10px;
+            object-fit: contain; /* Para que el logo de Gmail no se deforme */
         }
 
         .social-logo:hover { transform: scale(1.15); }
 
-        /* Modal y Mapas */
         #mapModal {
             display: none;
             position: fixed;
@@ -148,7 +142,10 @@
             <p>Tengo 21 años y soy de <span class="location-link" onclick="openMap('Esmeralda')">Esmeralda, Santa Fe</span>, actualmente residiendo en <span class="location-link" onclick="openMap('Rafaela')">Rafaela</span>.</p>
             <p>Soy una persona apasionada por la programación y el mundo de los videojuegos. Me considero alguien con una gran facilidad para el aprendizaje y una constante curiosidad por incorporar nuevos conocimientos técnicos y creativos.</p>
             <div class="contact-info">
-                <strong>Email:</strong> <a href="mailto:santisapei926@gmail.com">santisapei926@gmail.com</a>
+                <strong>Email:</strong> 
+                <a href="mailto:santisapei926@gmail.com?subject=Contacto%20desde%20Portfolio&body=Hola%20Santiago,">
+                    santisapei926@gmail.com
+                </a>
             </div>
         </div>
 
@@ -196,6 +193,9 @@
         <a href="https://github.com/SantiagoSapei" target="_blank">
             <img src="LogoGit.png" alt="GitHub" class="social-logo">
         </a>
+        <a href="mailto:santisapei926@gmail.com?subject=Contacto%20desde%20Portfolio&body=Hola%20Santiago,">
+            <img src="LogoGmail.png" alt="Enviar Email" class="social-logo">
+        </a>
     </footer>
 
     <div id="overlay" onclick="closeMap()"></div>
@@ -208,8 +208,8 @@
 
     <script>
         const maps = {
-            'Esmeralda': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.331201569033!2d-61.8345719!3d-31.5081297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ca9365287515e1%3A0xe744883908c6913e!2sEsmeralda%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1714150000000!5m2!1ses-419!2sar',
-            'Rafaela': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54572.34280832293!2d-61.52898252028369!3d-31.254750354666044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95caae460db27c0f%3A0x8be1b926d473c17b!2sRafaela%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1777245190103!5m2!1ses-419!2sar'
+            'Esmeralda': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13653.284457313013!2d-61.64293529999999!3d-31.18370775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ca904d9c02506b%3A0x69619623e80f4f5f!2sEsmeralda%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1714100000000!5m2!1ses-419!2sar',
+            'Rafaela': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54534.15617066874!2d-61.520464249999995!3d-31.2515286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ca3123891ca639%3A0x7d6c8e31006900f6!2sRafaela%2C%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1714100000001!5m2!1ses-419!2sar'
         };
 
         function openMap(lugar) {
